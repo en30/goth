@@ -16,6 +16,9 @@ defmodule Goth do
   @doc since: "1.3.0"
   defdelegate fetch(server), to: Goth.Server
 
+  @doc since: "1.3.0"
+  defdelegate source(server), to: Goth.Server
+
   @retry_after 1000
   @refresh_before_minutes 5
 

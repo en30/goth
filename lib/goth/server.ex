@@ -25,6 +25,11 @@ defmodule Goth.Server do
     GenServer.start_link(__MODULE__, opts, name: name)
   end
 
+  def source(server) do
+    {%{source: source}, _token} = get(server)
+    source
+  end
+
   def fetch(server) do
     {config, token} = get(server)
 

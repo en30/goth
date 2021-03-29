@@ -1,6 +1,19 @@
 defmodule GothTest do
   use ExUnit.Case, async: true
 
+  test "source/1", %{test: test} do
+    source = {:service_account, random_service_account_credentials(), []}
+
+    config = [
+      name: test,
+      source: source
+    ]
+
+    start_supervised!({Goth, config})
+
+    assert ^source = Goth.source(test)
+  end
+
   test "fetch/1", %{test: test} do
     now = System.system_time(:second)
     bypass = Bypass.open()
